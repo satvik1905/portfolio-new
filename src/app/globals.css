@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens from AUDIT.md §4–§8 and DECISIONS.md.
+ * Tailwind's default colors, type sizes, fonts and breakpoints are cleared so
+ * only audited values exist. transparent / current / inherit stay built in.
+ */
+
+@theme {
+  /* Breakpoints (AUDIT.md §8): mobile-first; tablet 810–1399.98, desktop ≥1400 */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 810px;
+  --breakpoint-desktop: 1400px;
+
+  /* Colors (AUDIT.md §5): only tokens with an observed role or a DECISIONS use */
+  --color-*: initial;
+  --color-white: #ffffff; /* page bg, light sections, nav, footer */
+  --color-ink: #010101; /* primary text */
+  --color-night: #101010; /* dark sections, primary pills, FAQ bubbles, project-card overlay */
+  --color-night-hover: #202020; /* FAQ bubble hover bg, video-card gradient end */
+  --color-black: #000000; /* testimonials fade overlay */
+  --color-line-dark: #262626; /* borders on dark cards / rulers */
+  --color-keycap: #303030; /* ⌘ / K keycap bg */
+  --color-keycap-hover: #5287e9; /* keycap bg on hover */
+  --color-keycap-hover-border: #6c9fff; /* keycap border on hover */
+  --color-ink-inverse: #f0f0f0; /* text on dark, mobile MENU pill bg; focus ring on dark (D2) */
+  --color-surface-alt: #f9f9f9; /* How it works, FAQ section bg */
+  --color-line: #dcdfe4; /* grid / ruler lines, light-section borders */
+  --color-dot-neutral: #d5d7d6; /* middle traffic-light dot fill */
+  --color-muted: #c4c4c4; /* ruler numbers & ticks, muted text, FAQ hover text */
+  --color-accent: #2d3af0; /* accent blue; focus ring on light (D2) */
+  --color-red: #ed2d2d; /* red stat, first traffic-light dot */
+  --color-green: #008000; /* green stat, third traffic-light dot */
+  --color-green-border: #2db43f; /* third traffic-light dot border */
+  --color-pink: #ff5679; /* FAQ hearts, first traffic-light dot border */
+  --color-yellow: #fed95e; /* FAQ star */
+  --color-placeholder: #ececec; /* D5 media placeholder fill, light sections */
+  --color-placeholder-dark: #262626; /* D5 media placeholder fill, dark sections */
+
+  /*
+   * Type scale (AUDIT.md §6), D15: rem sizes (px / 16), unitless line-heights,
+   * em letter-spacing. "-sm" = phone (≤809) size of the same role.
+   * Sub-properties are omitted where AUDIT.md gives a range or UNKNOWN.
+   */
+  --text-*: initial;
+  --text-display: 3.125rem;
+  --text-display--line-height: 1.2;
+  --text-display--font-weight: 900;
+  --text-display--letter-spacing: -0.04em;
+  --text-display-sm: 2.5rem;
+  --text-display-sm--line-height: 1.2;
+  --text-display-sm--font-weight: 900;
+  --text-display-sm--letter-spacing: -0.05em;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 1.2;
+  --text-h2--font-weight: 900;
+  --text-h2--letter-spacing: -0.05em;
+  --text-h2-sm: 1.875rem;
+  --text-h2-sm--line-height: 1.2;
+  --text-h2-sm--font-weight: 900;
+  --text-h2-sm--letter-spacing: -0.03em;
+  --text-counter-lg: 2.5rem;
+  --text-counter-lg--line-height: 1;
+  --text-counter-lg--font-weight: 800;
+  --text-counter-lg--letter-spacing: -0.03em;
+  --text-counter: 2rem;
+  --text-counter--line-height: 1;
+  --text-counter--font-weight: 800;
+  --text-counter--letter-spacing: -0.03em;
+  --text-quote: 2rem;
+  --text-quote--line-height: 1.2;
+  --text-quote--font-weight: 800;
+  --text-quote--letter-spacing: normal;
+  --text-h3: 1.875rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 900;
+  --text-h3--letter-spacing: -0.03em;
+  --text-h3-sm: 1.375rem; /* About "FINDIND MEANING" on phone */
+  --text-h3-sm--line-height: 1.2;
+  --text-h3-sm--font-weight: 900;
+  --text-h3-sm--letter-spacing: -0.03em;
+  --text-h4: 1.375rem; /* weight 800–900 in AUDIT.md, not set */
+  --text-h4--line-height: 1.2;
+  --text-h4--letter-spacing: -0.03em;
+  --text-name: 1.375rem; /* testimonial name */
+  --text-name--line-height: 1.4;
+  --text-name--font-weight: 500;
+  --text-name--letter-spacing: -0.03em;
+  --text-lead: 1.125rem; /* tracking −0.36 to −0.54px in AUDIT.md, not set */
+  --text-lead--line-height: 1.4;
+  --text-lead--font-weight: 400;
+  --text-wordmark: 1.125rem;
+  --text-wordmark--line-height: 1.4;
+  --text-wordmark--font-weight: 700;
+  --text-wordmark--letter-spacing: -0.03em;
+  --text-h5: 1rem;
+  --text-h5--line-height: 1.2;
+  --text-h5--font-weight: 900;
+  --text-h5--letter-spacing: -0.03em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.4;
+  --text-body--font-weight: 400;
+  --text-body--letter-spacing: -0.02em;
+  --text-faq: 1rem;
+  --text-faq--line-height: 1.4;
+  --text-faq--font-weight: 500;
+  --text-faq--letter-spacing: -0.02em;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.4;
+  --text-body-sm--font-weight: 400;
+  --text-body-sm--letter-spacing: -0.02em;
+  --text-tweet-name: 0.875rem;
+  --text-tweet-name--line-height: 1.2;
+  --text-tweet-name--font-weight: 500;
+  --text-tweet-name--letter-spacing: -0.04em;
+  --text-button: 0.75rem;
+  --text-button--line-height: 1.1;
+  --text-button--font-weight: 700;
+  --text-button--letter-spacing: -0.03em;
+  --text-tweet-meta: 0.75rem;
+  --text-tweet-meta--line-height: 1.1;
+  --text-tweet-meta--font-weight: 500;
+  --text-tweet-meta--letter-spacing: -0.04em;
+  --text-eyebrow: 0.75rem; /* JetBrains Mono: nav links, eyebrows */
+  --text-eyebrow--line-height: 1.1;
+  --text-eyebrow--font-weight: 600;
+  --text-eyebrow--letter-spacing: -0.05em;
+  --text-mono-strong: 0.75rem; /* JetBrains Mono */
+  --text-mono-strong--line-height: 1.1;
+  --text-mono-strong--font-weight: 700;
+  --text-mono-strong--letter-spacing: -0.05em;
+  --text-clock: 0.75rem; /* JetBrains Mono */
+  --text-clock--line-height: 1;
+  --text-clock--font-weight: 600;
+  --text-clock--letter-spacing: -0.05em;
+  --text-logo-caption: 0.625rem;
+  --text-logo-caption--line-height: 1.2;
+  --text-logo-caption--font-weight: 700;
+  --text-logo-caption--letter-spacing: -0.02em;
+  --text-label: 0.625rem; /* Geist Mono; weight 500–700 in AUDIT.md, not set */
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: -0.03em;
+  --text-ruler: 0.5rem; /* JetBrains Mono */
+  --text-ruler--line-height: 1.1;
+  --text-ruler--font-weight: 600;
+  --text-ruler--letter-spacing: -0.05em;
+
+  --font-*: initial;
+
+  /* Container widths (AUDIT.md §2 nav) */
+  --container-nav: 1400px; /* nav inner container, centered */
+  --container-nav-links: 472px; /* nav links column cap */
+
+  /* Radii (AUDIT.md §2, §7.3) */
+  --radius-pill: 100px; /* pills, buttons */
+  --radius-keycap: 6px; /* ⌘ / K keycaps */
+
+  /* Easing (AUDIT.md §9): Framer's snap ease on nav hovers */
+  --ease-snap: cubic-bezier(1, 0, 0, 1);
+}
+
+/* Fonts (AUDIT.md §4, D13): next/font variables set on <html> in layout.tsx */
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-jetbrains: var(--font-jetbrains-mono);
+}
+
+/* Background-only transition, so focus-ring color (D2) never animates. */
+@utility transition-bg {
+  transition-property: background-color;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+
+@layer base {
+  body {
+    @apply bg-white font-sans text-ink;
+  }
+}
