@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MediaPlaceholder } from "@/components/MediaPlaceholder";
 import type { CaseStudy } from "@/data/content";
-import { FOCUS_RING_DARK } from "@/lib/styles";
+import { FOCUS_RING, FOCUS_RING_DARK } from "@/lib/styles";
 
 const HOVER = "duration-400 ease-snap";
 
@@ -21,11 +21,20 @@ function TrafficLights() {
  * hover the tagline row goes 0.2→1, the image scales 1.1×, and a black
  * "VIEW CASE STUDY" tab slides into the top-right corner.
  */
-export function ProjectCard({ project, className = "" }: { project: CaseStudy; className?: string }) {
+export function ProjectCard({
+  project,
+  section = "dark",
+  className = "",
+}: {
+  project: CaseStudy;
+  /** Background the card sits on; picks the D2 focus-ring colour. */
+  section?: "light" | "dark";
+  className?: string;
+}) {
   return (
     <Link
       href={`/${project.slug}`}
-      className={`group relative flex min-h-136.25 overflow-clip ${FOCUS_RING_DARK} ${className}`}
+      className={`group relative flex min-h-136.25 overflow-clip ${section === "dark" ? FOCUS_RING_DARK : FOCUS_RING} ${className}`}
     >
       <span className={`absolute inset-0 z-1 transition-transform ${HOVER} group-hover:scale-110`}>
         <MediaPlaceholder {...project.heroImage} tone="dark" showLabel className="size-full" />
