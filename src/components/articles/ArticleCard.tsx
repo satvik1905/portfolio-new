@@ -19,7 +19,7 @@ export function ArticleCard({ article, className = "" }: { article: Article; cla
         className={`group relative flex h-[454.8px] flex-col overflow-clip ${FOCUS_RING}`}
       >
         <MediaPlaceholder {...article.heroImage} showLabel className="absolute inset-0 size-full" />
-        <span className="absolute top-full right-0 z-1 flex w-full justify-end bg-white p-1 text-button uppercase transition-transform duration-400 ease-snap group-hover:-translate-y-7.5">
+        <span className="absolute top-full right-0 z-1 flex min-h-7.5 w-full items-center justify-end bg-white p-1 text-button uppercase transition-transform duration-400 ease-snap group-hover:-translate-y-7.5">
           read article
         </span>
       </Link>

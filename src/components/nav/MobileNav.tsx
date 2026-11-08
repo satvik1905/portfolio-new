@@ -4,7 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { CONTACT_TARGET, EDGES, FOCUS_RING } from "@/lib/styles";
+import { CONTACT_TARGET, FOCUS_RING } from "@/lib/styles";
+
+/** Bottom/top hairline for already-positioned bars (EDGES would reset their position to relative). */
+const HAIRLINE = "after:pointer-events-none after:absolute after:inset-0 after:border-line";
 
 /** The overlay lists ARTICLES before ABOUT, unlike the desktop nav (AUDIT.md §2). */
 const MENU_LINKS = [
@@ -58,7 +61,7 @@ export function MobileNav() {
 
   return (
     <div className="tablet:hidden">
-      <nav className={`fixed inset-x-0 top-0 z-30 flex justify-center bg-white p-2.5 ${EDGES} after:border-b`}>
+      <nav className={`fixed inset-x-0 top-0 z-30 flex justify-center bg-white p-2.5 ${HAIRLINE} after:border-b`}>
         <div className="flex w-full max-w-nav items-center justify-between">
           <Link href="/" className={`flex flex-1 items-center self-stretch text-wordmark-sm text-ink ${FOCUS_RING}`}>
             MARTTIN BOUCHER
@@ -98,7 +101,7 @@ export function MobileNav() {
                 </li>
               ))}
             </ul>
-            <div className={`absolute inset-x-0 bottom-0 flex justify-center bg-white p-2.5 ${EDGES} after:border-t`}>
+            <div className={`absolute inset-x-0 bottom-0 flex justify-center bg-white p-2.5 ${HAIRLINE} after:border-t`}>
               <Link
                 href={CONTACT_TARGET}
                 className={`flex min-h-9.25 items-center justify-center gap-2 rounded-pill bg-night px-4 py-3 text-button text-white uppercase ${FOCUS_RING}`}

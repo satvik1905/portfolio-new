@@ -52,9 +52,9 @@ export function ProjectsSection() {
           </span>
         </motion.h2>
 
-        <div className="flex w-full flex-col gap-6 overflow-clip p-2.5 tablet:p-6">
+        <div className="flex w-full flex-col gap-2.5 overflow-clip p-2.5 tablet:gap-6 tablet:p-6">
           <ProjectCard project={first} />
-          <div className="flex flex-col gap-6 tablet:flex-row">
+          <div className="flex flex-col gap-2.5 tablet:flex-row tablet:gap-6">
             {rest.map((project) => (
               <ProjectCard key={project.slug} project={project} className="flex-1" />
             ))}

@@ -42,9 +42,12 @@ export function Services() {
               slotClassName="size-[calc(4em/3)] tablet:size-[1.5em]"
               mediaClassName="inset-0 tablet:-inset-[0.25em]"
             />
-            that
+            <span className="hidden tablet:inline">that</span>
           </span>
-          <span>dare to stand out</span>
+          {/* Phones move "that" down to the second line (AUDIT.md §7.4 row heights). */}
+          <span>
+            <span className="tablet:hidden">that </span>dare to stand out
+          </span>
         </SectionHeading>
 
         <ul className="grid w-full grid-cols-1 gap-18 tablet:grid-cols-2">

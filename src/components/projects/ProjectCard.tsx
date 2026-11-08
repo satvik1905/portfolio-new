@@ -46,7 +46,7 @@ export function ProjectCard({ project, className = "" }: { project: CaseStudy; c
       </span>
 
       <span
-        className={`absolute top-0 right-0 z-3 flex w-full max-w-75 -translate-y-7.5 justify-end bg-black p-1 text-button text-ink-inverse uppercase transition-transform ${HOVER} group-hover:translate-y-0`}
+        className={`absolute top-0 right-0 z-3 flex min-h-7.5 w-full max-w-75 -translate-y-7.5 items-center justify-end bg-black p-1 text-button text-ink-inverse uppercase transition-transform ${HOVER} group-hover:translate-y-0`}
       >
         view case study
       </span>

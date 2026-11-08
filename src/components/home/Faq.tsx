@@ -16,7 +16,7 @@ const FAQS: { question: string; answer: string; decoration?: Decoration }[] = [
   {
     question: "What tools do you use?",
     answer: "Mainly Framer, Figma, and a bit of custom code when needed.",
-    decoration: { name: "faq-heart", className: "-top-3.5 -right-6.5 size-7 rotate-19" },
+    decoration: { name: "faq-heart", className: "-top-2.75 -right-1 size-7 rotate-19" },
   },
   {
     question: "How long does a project take?",
@@ -26,7 +26,7 @@ const FAQS: { question: string; answer: string; decoration?: Decoration }[] = [
     question: "Do you offer design and development together?",
     answer:
       "Yes. I design and develop directly in Framer, so what you see is what ships. That means no handoff delays, no translation errors — just a seamless build from concept to live site.",
-    decoration: { name: "faq-star", className: "top-2 -left-4.5 size-7 -rotate-13" },
+    decoration: { name: "faq-star", className: "top-2.25 -left-4 size-7 -rotate-13" },
   },
   {
     question: "What’s your typical process?",
@@ -37,7 +37,7 @@ const FAQS: { question: string; answer: string; decoration?: Decoration }[] = [
     question: "Can you help improve an existing website?",
     answer:
       "Absolutely. I often take on redesign projects — refining structure, simplifying messaging, and improving performance. Sometimes a few focused changes can completely shift perception and results.",
-    decoration: { name: "faq-heart", className: "-top-3.5 -right-6.5 size-7 rotate-19" },
+    decoration: { name: "faq-heart", className: "-top-2.75 -right-1 size-7 rotate-19" },
   },
 ];
 
@@ -46,11 +46,11 @@ function ToggleIcon({ open }: { open: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={`absolute top-1/2 left-full ml-3 flex size-5 -translate-y-1/2 items-center justify-center rounded-pill border-[1.5px] border-line-dark ${
-        open ? "bg-accent" : "group-hover:bg-accent"
+      className={`absolute top-1/2 left-full ml-3 flex size-5 -translate-y-1/2 items-center justify-center rounded-pill border-[1.5px] ${
+        open ? "border-accent bg-accent" : "border-line-dark group-hover:bg-accent"
       }`}
     >
-      <svg viewBox="0 0 12 12" className="size-3 stroke-ink-inverse" strokeWidth="1.5" strokeLinecap="round">
+      <svg viewBox="0 0 12 12" className={`size-3 ${open ? "stroke-white" : "stroke-line-dark"}`} strokeWidth="1.5" strokeLinecap="round">
         <line x1="2" y1="6" x2="10" y2="6" />
         <motion.line
           x1="6"

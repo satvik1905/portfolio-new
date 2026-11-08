@@ -88,7 +88,9 @@ export function Hero() {
                 </span>
               </span>
               <span className="flex items-center justify-center gap-2">
-                <Word className="hidden tablet:inline-block">LOUDER</Word>
+                <span className="hidden tablet:inline">
+                  <Word>LOUDER</Word>
+                </span>
                 <span className="order-first flex tablet:order-none">
                   <HeroIcon name="hero-wallet" delay={1.0} />
                 </span>
