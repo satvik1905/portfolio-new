@@ -93,6 +93,14 @@
   --text-wordmark--line-height: 1.4;
   --text-wordmark--font-weight: 700;
   --text-wordmark--letter-spacing: -0.03em;
+  --text-wordmark-sm: 0.875rem; /* phone nav wordmark */
+  --text-wordmark-sm--line-height: 1.4;
+  --text-wordmark-sm--font-weight: 700;
+  --text-wordmark-sm--letter-spacing: -0.02em;
+  --text-menu-link: 1.125rem; /* JetBrains Mono: phone menu overlay links */
+  --text-menu-link--line-height: 1.1;
+  --text-menu-link--font-weight: 600;
+  --text-menu-link--letter-spacing: -0.05em;
   --text-h5: 1rem;
   --text-h5--line-height: 1.2;
   --text-h5--font-weight: 900;
@@ -154,9 +162,26 @@
   /* Radii (AUDIT.md §2, §7.3) */
   --radius-pill: 100px; /* pills, buttons */
   --radius-keycap: 6px; /* ⌘ / K keycaps */
+  --radius-bubble: 24px; /* FAQ question and answer bubbles */
 
   /* Easing (AUDIT.md §9): Framer's snap ease on nav hovers */
   --ease-snap: cubic-bezier(1, 0, 0, 1);
+
+  /* Marquees (AUDIT.md §9.2): ≈30px/s; distance and duration set per ticker */
+  --animate-marquee: marquee var(--marquee-duration) linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Idle float (AUDIT.md §9.2): translateY 0 → −5px → 0; period set per element */
+  --animate-float: float var(--float-period) ease-in-out infinite;
+  @keyframes float {
+    50% {
+      translate: 0 -5px;
+    }
+  }
 }
 
 /* Fonts (AUDIT.md §4, D13): next/font variables set on <html> in layout.tsx */
@@ -164,6 +189,14 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-jetbrains: var(--font-jetbrains-mono);
+}
+
+/* Home headline block zoom (AUDIT.md §9.1); --hero-scale is set per breakpoint. */
+@keyframes hero-zoom {
+  from {
+    scale: var(--hero-scale);
+    translate: 0 20px;
+  }
 }
 
 /* Background-only transition, so focus-ring color (D2) never animates. */

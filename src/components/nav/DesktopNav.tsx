@@ -5,23 +5,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { MediaPlaceholder } from "@/components/MediaPlaceholder";
-
-/** Shortcut and LET'S TALK target, set by D8 (currently /contact). */
-const CONTACT_TARGET = "/contact";
-
-const LINKS = [
-  { label: "HOME", href: "/" },
-  { label: "WORK", href: "/projects" },
-  { label: "ABOUT", href: "/about" },
-  { label: "ARTICLES", href: "/articles" },
-];
+import { ArrowLink, NAV_LINKS } from "@/components/nav/links";
+import { CONTACT_TARGET, FOCUS_RING } from "@/lib/styles";
 
 /** Keycap bob periods while LET'S TALK is hovered (AUDIT.md §9.4). */
 const BOB_PERIOD = { command: 2.45, k: 2.65 };
-
-/** D2 focus ring on light sections: 2px solid #2D3AF0, 2px offset, keyboard only. */
-const FOCUS_RING =
-  "focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-accent focus-visible:outline-offset-2";
 
 /** D11: ⌘K on Mac, Ctrl+K on Windows / Linux, overriding the browser default. */
 function useContactShortcut() {
@@ -40,26 +28,6 @@ function useContactShortcut() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [router]);
-}
-
-function NavLink({ label, href }: { label: string; href: string }) {
-  return (
-    <Link
-      href={href}
-      className={`group flex items-center overflow-clip font-jetbrains text-eyebrow text-night ${FOCUS_RING}`}
-    >
-      <span className="opacity-60 transition-opacity duration-400 ease-snap group-hover:opacity-80">
-        {label}
-      </span>
-      {/* Parked 20px below its slot; the link's overflow-clip hides it until hover. */}
-      <MediaPlaceholder
-        name="nav-link-arrow"
-        exportSize="73×72"
-        type="PNG"
-        className="size-4.5 translate-y-5 transition-transform duration-400 ease-snap group-hover:translate-y-0"
-      />
-    </Link>
-  );
 }
 
 function Keycap({
@@ -130,8 +98,8 @@ export function DesktopNav() {
           MARTTIN BOUCHER
         </Link>
         <div className="flex max-w-nav-links flex-1 basis-0 items-center justify-between px-4">
-          {LINKS.map((link) => (
-            <NavLink key={link.href} {...link} />
+          {NAV_LINKS.map((link) => (
+            <ArrowLink key={link.href} {...link} />
           ))}
         </div>
         <div className="flex flex-1 basis-0 items-center justify-end">
