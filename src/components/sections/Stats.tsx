@@ -31,11 +31,12 @@ const STATS = [
  * "Big deal stats" (AUDIT.md §3 /projects §4, reused on /about): three
  * count-up stats with 70px icons, then SCHEDULE CALL. The template spaces
  * the middle column 22px throughout and the outer ones 22 / 10px; kept as is.
+ * `className` sets the side padding (none when nested in /about's column).
  */
-export function Stats() {
+export function Stats({ className = "px-4 tablet:px-12" }: { className?: string }) {
   return (
     <div className="flex w-full justify-center">
-      <div className="flex w-full max-w-300 flex-col items-center gap-20 px-4 py-12 tablet:px-12">
+      <div className={`flex w-full max-w-300 flex-col items-center gap-20 py-12 ${className}`}>
         <HeadingReveal className="flex flex-col items-center gap-4 overflow-clip">
           <Eyebrow>BIG DEAL STATS</Eyebrow>
           <h2 className="flex max-w-125 flex-col items-center text-center text-h3-sm uppercase tablet:text-h3">

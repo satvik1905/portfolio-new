@@ -71,6 +71,10 @@
   --text-quote--line-height: 1.2;
   --text-quote--font-weight: 800;
   --text-quote--letter-spacing: normal;
+  --text-quote-sm: 1.625rem; /* About quote on phones (26/31.2) */
+  --text-quote-sm--line-height: 1.2;
+  --text-quote-sm--font-weight: 800;
+  --text-quote-sm--letter-spacing: normal;
   --text-h3: 1.875rem;
   --text-h3--line-height: 1.2;
   --text-h3--font-weight: 900;
